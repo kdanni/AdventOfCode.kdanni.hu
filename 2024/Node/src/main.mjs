@@ -24,7 +24,7 @@ async function importDayX(commandString) {
     // console.log(match[1]);
     if(match[1]) {
         try {
-            await import(`./advent2024/day${match[1]}/day${match[1]}.mjs`);
+            await import(`../adventSrc/day${match[1]}/day${match[1]}.mjs`);
         } catch (err) {
             console.error(`Day ${match} not found.`, match);
         }

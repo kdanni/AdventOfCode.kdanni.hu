@@ -1,4 +1,4 @@
-import { gotInput, toLines, toArray } from '../../puzzle-input/got-puzzle-input.mjs';
+import { gotInput, toLines, toArray } from '../../src/puzzle-input/got-puzzle-input.mjs';
 
 async function main() {
     console.log('[day1]');

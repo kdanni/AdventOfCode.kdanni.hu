@@ -1,3 +1,8 @@
+import * as fs from 'node:fs/promises';
+import { sep } from 'node:path';
+import { fileURLToPath, pathToFileURL } from 'node:url';
+const metaUrlPath = fileURLToPath(new URL('.', import.meta.url));
+
 import got from 'got';
 
 export async function gotInput(day){
@@ -10,6 +15,17 @@ export async function gotInput(day){
         });
         const {body} = result;
         // console.log(body);
+
+        try {
+            const adventDir = fileURLToPath(pathToFileURL(`${metaUrlPath}${sep}..${sep}..${sep}adventSrc`));
+            const filePath = fileURLToPath(pathToFileURL(`${adventDir}${sep}day${day}${sep}day${day}.txt`));
+            console.log(filePath);
+            await fs.writeFile(filePath, `${body}`);
+            
+        } catch (ferr) {
+            console.error(ferr);
+        }
+
         return `${body}`;
     } catch (err) {
         console.error(err);
