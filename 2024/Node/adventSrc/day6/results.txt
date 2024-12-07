@@ -1,0 +1,9 @@
+input2: v1: solution 4665 part2 1424 oCount 1424 iterations 5081
+input2: v2: solution 4665 part2 1428 cycles.length 1428
+            solution 4665 part2 1431 cycles.length 1431
+
+kdanni v1: solution 4656 part2 1465 oCount 1465 iterations 5140
+kdanni v2: solution 4656 part2 1467 cycles.length 1467
+           solution 4656 part2 1471 cycles.length 1471
+           solution 4656 part2 1466 cycles.length 1466
+           bruteforce: solution 4656 part2 1575 - OK

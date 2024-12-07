@@ -32,6 +32,18 @@ export async function gotInput(day){
     }
 }
 
+export async function getInputFile(day, fileName){
+    try {
+        const adventDir = fileURLToPath(pathToFileURL(`${metaUrlPath}${sep}..${sep}..${sep}adventSrc`));
+        const filePath = fileURLToPath(pathToFileURL(`${adventDir}${sep}day${day}${sep}${fileName}`));
+        console.log(filePath);
+        const data = await fs.readFile(filePath, 'utf-8');
+        return data;
+    } catch (err) {
+        console.error(err);
+    }
+}
+
 export function toLines(input){
     if(!input || input.length < 1) {
         throw 'Imput error!';
