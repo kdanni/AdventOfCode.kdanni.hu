@@ -1,0 +1,7 @@
+Sync + Log line every possible operation oprder:
+solution 20665830408335 part2 354060705047464
+Advent of Code shutting down. Up time: 0:27:47.561 Exit Status: 0
+
+Async + only summary Log per equation:
+solution 20665830408335 part2 354060705047464
+Advent of Code shutting down. Up time: 0:1:18.43 Exit Status: 0
