@@ -6,4 +6,28 @@ kdanni v1: solution 4656 part2 1465 oCount 1465 iterations 5140
 kdanni v2: solution 4656 part2 1467 cycles.length 1467
            solution 4656 part2 1471 cycles.length 1471
            solution 4656 part2 1466 cycles.length 1466
-           bruteforce: solution 4656 part2 1575 - OK
+           bruteforce: solution 4656 part2 1575 - OK  (possibleXY 130 x 130 = 16 900) Up time: 0:14:26.754
+
+
+
+v3:
+  - X +- 1 direction
+  solution 4656 part2 1575
+    Advent of Code shutting down. Up time: 0:7:57.929 Exit Status: 0
+
+  - log lines  
+  solution 4656 part2 1575 possibleXY 9753
+    Advent of Code shutting down. Up time: 0:7:19.560 Exit Status: 0
+
+  - reference run (possibleXY 130 x 130 = 16 900)
+  solution 4656 part2 1575 possibleXY 16900
+    Advent of Code shutting down. Up time: 0:14:35.81 Exit Status: 0
+    // Async didn't help.
+
+  - X only - orig Guard x-y
+  solution 4656 part2 1575 possibleXY 4656
+    Advent of Code shutting down. Up time: 0:2:37.192 Exit Status: 0
+
+  - X only - Guard position last positon before X
+  solution 4656 part2 1575 possibleXY 5140 dedupOptimal 4656
+    Advent of Code shutting down. Up time: 0:1:12.186 Exit Status: 0
