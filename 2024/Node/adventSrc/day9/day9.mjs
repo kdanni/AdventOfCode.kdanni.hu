@@ -1,4 +1,4 @@
-import { gotInput, toLines, toArray } from '../../src/puzzle-input/got-puzzle-input.mjs';
+import { gotInput, toLines, toArray, getInputFile } from '../../src/puzzle-input/got-puzzle-input.mjs';
 
 import emitter from '../../src/event-emitter.mjs';
 
@@ -18,7 +18,9 @@ emitter.on(`2024-day${DAY}`, (msg) => {
 async function main() {
     console.log(`[day${DAY}]`);
 
-    const input = await gotInput(DAY);
+    const input = await getInputFile(`${DAY}`, 'example.txt');
+
+    // const input = await gotInput(DAY);
     const lines = toLines(input);
         
     // for(let y = 0 ; y < lines.length ; y++) {
@@ -144,6 +146,16 @@ async function main() {
                                 newFlatBlocks[i+k].num = newFlatBlocks[i+k].num - freespaceUsed;
                             }
                         }
+                    } // End if freeSpaceLen >= newFlatBlocks[j].num
+                    else {
+
+                        /** Attempt to move each file exactly once in order of decreasing file ID number 
+                         * starting with the file with the highest file ID number. If there is no 
+                         * span of free space to the left of a file that is large enough to fit the file, 
+                         * the file does not move. */
+
+                        // Accidentally completed because somehow worked without this part:
+                        // newFlatBlocks[j].deFraged = true;
                     }
                 }
                 if(doBreak) {
