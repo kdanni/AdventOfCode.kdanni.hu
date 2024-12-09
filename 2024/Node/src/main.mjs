@@ -12,8 +12,11 @@ if (/^no[- ]operation\b/.test(commandString)) {
 // else if (/^db[- ]?install\b/.test(commandString)) {
 //     dbinstall();
 // } 
-else if (/^day[- ]?\d+\b/.test(commandString)) {
+else if (/^day[- ]?\d+$/.test(commandString)) {
     importDayX(commandString)
+}
+else if (/^day[- ]?\d+ \S+\b/.test(commandString)) {
+    importDayX_vS(commandString)
 } else {
     main();
 }
@@ -27,6 +30,19 @@ async function importDayX(commandString) {
             await import(`../adventSrc/day${match[1]}/day${match[1]}.mjs`);
         } catch (err) {
             console.error(`[main] import of "../adventSrc/day${match[1]}/day${match[1]}.mjs" failed.`);
+            process.emit('exit_event');
+        }
+    }
+}
+
+async function importDayX_vS (commandString) {
+    const match = /^day[- ]?(\d+) (\S+)\b/.exec(commandString) || ['0','0','0'];
+    console.log(match[1], match[2]);
+    if(match[1] && match[2]) {
+        try {
+            await import(`../adventSrc/day${match[1]}/day${match[1]}_${match[2]}.mjs`);
+        } catch (err) {
+            console.error(`[main] import of "../adventSrc/day${match[1]}/day${match[1]}_${match[2]}.mjs" failed.`);
             process.emit('exit_event');
         }
     }
