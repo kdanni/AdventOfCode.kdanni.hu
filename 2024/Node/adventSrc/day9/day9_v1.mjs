@@ -18,9 +18,9 @@ emitter.on(`2024-day${DAY}`, (msg) => {
 async function main() {
     console.log(`[day${DAY}]`);
 
-    // const input = await getInputFile(`${DAY}`, 'example.txt');
+    const input = await getInputFile(`${DAY}`, 'example.txt');
 
-    const input = await gotInput(DAY);
+    // const input = await gotInput(DAY);
     const lines = toLines(input);
         
     // for(let y = 0 ; y < lines.length ; y++) {
@@ -92,40 +92,74 @@ async function main() {
     // Defrag:
 
     let newFlatBlocks = JSON.parse(JSON.stringify(flatBlocks));
-    
-    for(let j = newFlatBlocks.length-1; j >= 0; j--) {
 
-        if(newFlatBlocks[j].type === 'f') {
-            for(let i = 0; i < j; i++) {
+    
+    /** 
+     * Free space sucking the files in.
+     * This way you can try moving the files more than once.
+     */
+
+    for(let i = 0; i < newFlatBlocks.length; i++) {
+        if(newFlatBlocks[i].type === 'f') {
+            newFlatBlocks[i].deFraged = true;
+        } else if(newFlatBlocks[i].type === '.') {
+            let freeSpaceLen = newFlatBlocks[i].num;
+            let freespaceUsed = 0;
+            for(let j = newFlatBlocks.length-1; j >= i; j--) {
+
+                // console.log('newFlatBlocks[i]', i, newFlatBlocks[i], 
+                //     'newFlatBlocks.length-1', newFlatBlocks.length-1,
+                //     'newFlatBlocks[j]', j, newFlatBlocks[j]);
+            
                 let doBreak = false;
-                if(newFlatBlocks[i].type === '.') {
-                    let freeSpaceLen = newFlatBlocks[i].num;
-                    let fileLen = newFlatBlocks[j].num;
-                    let freespaceUsed = 0;
-                    if(freeSpaceLen >= fileLen) {
+                if(newFlatBlocks[j].type === 'f') {                    
+                    if(freeSpaceLen >= newFlatBlocks[j].num) {
+            
+                        // console.log('newFlatBlocks[i]', i, newFlatBlocks[i], 
+                        //     'newFlatBlocks.length-1', newFlatBlocks.length-1,
+                        //     'newFlatBlocks[j]', j, newFlatBlocks[j]);
+                    
                         doBreak = true;
-                        for(let k = 0; k < fileLen; k++) {
-                            newFlatBlocks[i+k].type = 'f';
-                            newFlatBlocks[i+k].num = newFlatBlocks[j-k].num;
-                            newFlatBlocks[i+k].id = newFlatBlocks[j-k].id;
-                            freespaceUsed++;
-                            newFlatBlocks[j-k].type = '.';
-                            delete newFlatBlocks[j-k].id;
+                        for(let k = 0; k < newFlatBlocks[j].num; k++) {
+                            if(
+                                newFlatBlocks[i+k].type === '.' 
+                                && newFlatBlocks[j-k].type === 'f'
+                                && newFlatBlocks[j-k].deFraged !== true
+                            )
+                            {
+                                // console.log('before newFlatBlocks[i]', newFlatBlocks[i]);
+                                newFlatBlocks[i+k].type = 'f';
+                                newFlatBlocks[i+k].num = newFlatBlocks[j-k].num;
+                                newFlatBlocks[i+k].id = newFlatBlocks[j-k].id;
+                                newFlatBlocks[i+k].deFraged = true;
+                                freespaceUsed++;
+                                newFlatBlocks[j-k].type = '.';
+                                newFlatBlocks[j-k].oldFile = newFlatBlocks[i+k];
+                                newFlatBlocks[j-k].movedTo = i+k;
+                                newFlatBlocks[j-k].deFraged = true;
+                                delete newFlatBlocks[j-k].id;
+                                // console.log('after newFlatBlocks[i]', newFlatBlocks[i]);
+                            } else {
+
+                                // console.log('newFlatBlocks[i+k]', i, k , newFlatBlocks[i+k], 
+                                //     'newFlatBlocks.length-1', newFlatBlocks.length-1,
+                                //     'newFlatBlocks[j-k]', j, k, newFlatBlocks[j-k]);
+                            
+                            }
                         }
-                        for(let k = fileLen; k < freeSpaceLen; k++) {
+                        for(let k = 0; k < freeSpaceLen; k++) {
                             if(newFlatBlocks[i+k].type === '.') {
                                 newFlatBlocks[i+k].num = newFlatBlocks[i+k].num - freespaceUsed;
                             }
-                        }                        
-                    }
-                }                
+                        }
+                    } // End if freeSpaceLen >= newFlatBlocks[j].num
+                }
                 if(doBreak) {
                     break;
                 }
-            }
+            } // for j
         }
-    }
-
+    } // for i
 
     console.log('flatBlocks', flatBlocks);
     console.log('newFlatBlocks', newFlatBlocks);

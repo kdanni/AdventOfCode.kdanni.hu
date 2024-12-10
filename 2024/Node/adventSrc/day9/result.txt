@@ -1,8 +1,0 @@
-fileBlockCount 49989 freespaceBlockCount 44612 reFrag 49989 flatBlocks 94601
-solution 6384282079460 part2 6408966547049
-Advent of Code shutting down. Up time: 0:0:30.781 Exit Status: 0
-
-
-fileBlockCount 49989 freespaceBlockCount 44612 reFrag 49989 flatBlocks 94601
-solution 6384282079460 part2 15655964365455
-Advent of Code shutting down. Up time: 0:0:9.982 Exit Status: 0
