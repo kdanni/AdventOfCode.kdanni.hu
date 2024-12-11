@@ -12,3 +12,6 @@ output.png
 
 
 requirements.txt
+
+
+__pycache__
