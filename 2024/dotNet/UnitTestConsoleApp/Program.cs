@@ -1,7 +1,8 @@
-﻿using PuzzleInput;
+﻿
+using UnitTestConsoleApp;
 
 Console.WriteLine("Hello, World!");
 
 
 
-Console.WriteLine(PuzzleInput.GetPuzzleInput(15));
+Console.WriteLine(PuzzleInputTest.GetPuzzleInputWrapper(15));
