@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Day14WinFormsApp", "..\Day1
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTestConsoleApp", "..\UnitTestConsoleApp\UnitTestConsoleApp.csproj", "{AE76D11E-1E9F-44C1-A483-A9ADE32CAC41}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day15WinFormApp", "Day15WinFormApp\Day15WinFormApp.csproj", "{2DF8C604-A78A-425E-93B6-2119C9AB0070}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{AE76D11E-1E9F-44C1-A483-A9ADE32CAC41}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE76D11E-1E9F-44C1-A483-A9ADE32CAC41}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE76D11E-1E9F-44C1-A483-A9ADE32CAC41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DF8C604-A78A-425E-93B6-2119C9AB0070}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DF8C604-A78A-425E-93B6-2119C9AB0070}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DF8C604-A78A-425E-93B6-2119C9AB0070}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DF8C604-A78A-425E-93B6-2119C9AB0070}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
