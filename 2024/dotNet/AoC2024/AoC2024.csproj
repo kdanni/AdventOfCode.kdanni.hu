@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PuzzleInput\PuzzleInput.cs" />
+    <Compile Include="PuzzleInput\WinReqistrySettings.cs" />
     <Compile Include="WinFormsControl\MapTile.cs">
       <SubType>UserControl</SubType>
     </Compile>
