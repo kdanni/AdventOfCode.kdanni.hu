@@ -1,0 +1,22 @@
+{
+  "name": "@kdanni/adventofcode",
+  "version": "1.2025.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dbinstall": "node index.js dbinstall",
+    "day": "node index.js day",
+    "dev": "nodemon index.js",
+    "test": "node --test --test-reporter=spec test/**/*.test.js"
+  },
+  "author": "kdanni",
+  "license": "MIT",
+  "description": "",
+  "dependencies": {
+    "dotenv": "16.4.5",
+    "got": "14.4.3",
+    "level": "8.0.1",
+    "neo4j-driver": "5.27.0"
+  }
+}
